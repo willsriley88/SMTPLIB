@@ -38,6 +38,3 @@ sender_password = 'your_email_password'
 recipient_email = 'recipient@example.com'
 subject = 'Notification'
 message = 'This is a notification email sent from a Python script.'
-
-email_sender = EmailSender(sender_email, sender_password)
-email_sender.send_email(subject, message)
