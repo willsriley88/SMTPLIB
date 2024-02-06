@@ -13,24 +13,27 @@ class EmailSender:
         self.smtp_port = smtp_port
 
     def send_email(self, subject, message):
-        # Set up the SMTP server
-        smtp_server = smtplib.SMTP_SSL(self.smtp_server, self.smtp_port)
+        try:
+            # Set up the SMTP server
+            smtp_server = smtplib.SMTP_SSL(self.smtp_server, self.smtp_port)
 
-        # Login to the SMTP server
-        smtp_server.login(self.sender_email, self.sender_password)
+            # Login to the SMTP server
+            smtp_server.login(self.sender_email, self.sender_password)
 
-        # Create a MIMEText object to represent the email
-        email_message = MIMEMultipart()
-        email_message['From'] = self.sender_email
-        email_message['To'] = self.recipient_email
-        email_message['Subject'] = subject
-        email_message.attach(MIMEText(message, 'plain'))
+            # Create a MIMEText object to represent the email
+            email_message = MIMEMultipart()
+            email_message['From'] = self.sender_email
+            email_message['To'] = self.recipient_email
+            email_message['Subject'] = subject
+            email_message.attach(MIMEText(message, 'plain'))
 
-        # Send the email
-        smtp_server.send_message(email_message)
+            # Send the email
+            smtp_server.send_message(email_message)
 
-        # Close the connection to the SMTP server
-        smtp_server.quit()
+            # Close the connection to the SMTP server
+            smtp_server.quit()
+        except Exception as e:
+            print(e)
 
 # Example usage
 sender_email = 'your_email@example.com'
