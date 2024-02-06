@@ -34,10 +34,3 @@ class EmailSender:
             smtp_server.quit()
         except Exception as e:
             print(e)
-
-# Example usage
-sender_email = 'your_email@example.com'
-sender_password = 'your_email_password'
-recipient_email = 'recipient@example.com'
-subject = 'Notification'
-message = 'This is a notification email sent from a Python script.'
